@@ -36,7 +36,7 @@
 
     TEST;
 
-    if (!isset($_POST['submit'])) return;team
+    if (!isset($_POST['submit'])) return;
     if ($num == $guess) {
         echo "<script>console.log('test');</script>";
     }
