@@ -1,3 +1,23 @@
+<?php
+$output = "Guess the number!";
+
+if (isset($_POST['num']) && isset($_POST['guess'])) {
+	$num = $_POST['num'];
+	$guess = $_POST['guess'];
+	
+	if ($guess > $num) {
+		$ouput = " Your guess is too high!";
+	} elseif ($guess < $num) {
+		$output = " Your guess is too low!";
+	} else {
+		$ouput = " You guessed the currect number! $num";
+		$num = rand(1, 100);
+	}
+} else {
+	$num = rand(1, 100);	
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,35 +33,14 @@
         <fieldset>
             <legend>Guess The Number</legend>
             <div>
-                <input type="text" name="guess">
+				<input type="hidden" name="num" value="<?= $num ?>">
+                <input type="number" name="guess">
             </div>
             <div>
-                <input type="submit" value="Submit &rarr;" name="submit">
+                <input type="submit" value="Submit &rarr;">
             </div>
         </fieldset>
     </form>
-
-    <?php
-    $num = rand(1, 100);
-
-    if (isset($_POST['guess'])) {
-        $guess = $_POST['guess'];
-    } else {
-        $guess = '';
-    }
-
-    echo <<<TEST
-    Number: $num
-    Guess: $guess
-
-    TEST;
-
-    if (!isset($_POST['submit'])) return;
-    if ($num == $guess) {
-        echo "<script>console.log('test');</script>";
-    }
-
-    ?>
 </body>
 
 </html>
