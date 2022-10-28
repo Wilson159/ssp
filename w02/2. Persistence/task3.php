@@ -1,20 +1,20 @@
 <?php
-$output = "Guess the number!";
+$output = "Please guess the number";
 
-if (isset($_POST['num']) && isset($_POST['guess'])) {
-	$num = $_POST['num'];
-	$guess = $_POST['guess'];
-	
-	if ($guess > $num) {
-		$ouput = " Your guess is too high!";
-	} elseif ($guess < $num) {
-		$output = " Your guess is too low!";
-	} else {
-		$ouput = " You guessed the currect number! $num";
-		$num = rand(1, 100);
-	}
+if (isset($_POST["num"]) && isset($_POST["guess"])) {
+    $num = $_POST["num"];
+    $guess = $_POST["guess"];
+
+    if ($guess > $num) {
+        $output = " Your guess is too high! ";
+    } elseif ($guess < $num) {
+        $output = " Your guess is too low! ";
+    } else {
+        $output = " You guessed correctly! $num ";
+        $num = rand(1, 100); // set a new number
+    }
 } else {
-	$num = rand(1, 100);	
+    $num = rand(1, 100);
 }
 ?>
 
@@ -29,6 +29,8 @@ if (isset($_POST['num']) && isset($_POST['guess'])) {
 </head>
 
 <body>
+    <h3><?= $output ?></h3>
+
     <form method="post">
         <fieldset>
             <legend>Guess The Number</legend>
