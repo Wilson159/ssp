@@ -1,7 +1,7 @@
 <?php
 // SQL Connection
 $conn = mysqli_connect('localhost', 'root', '', 'w02');
-if (!$conn) { die('Connection Failed:' . mysqli_connect_error()); };
+if ($conn->connect_error) { die('Conection failed: ') . $conn->connect_error; }
 
 
 // SQL Queries
@@ -22,10 +22,12 @@ $sql_query5 = "INSERT INTO student (surname, forename, address, telephone, date_
 
 
 // Testing SQL Queries
-if (mysqli_query($conn, $sql_query1)) { echo "Successful data entry!\n"; }
-if (mysqli_query($conn, $sql_query2)) { echo "Successful data entry!\n"; }
-if (mysqli_query($conn, $sql_query3)) { echo "Successful data entry!\n"; }
-if (mysqli_query($conn, $sql_query4)) { echo "Successful data entry!\n"; }
-if (mysqli_query($conn, $sql_query5)) { echo "Successful data entry!\n"; }
+echo "<div class = 'sql_output'>";
+if ($conn->query($sql_query1)) { echo "<p>Successful data entry!</p>"; }
+if ($conn->query($sql_query2)) { echo "<p>Successful data entry!</p>"; }
+if ($conn->query($sql_query3)) { echo "<p>Successful data entry!</p>"; }
+if ($conn->query($sql_query4)) { echo "<p>Successful data entry!</p>"; }
+if ($conn->query($sql_query5)) { echo "<p>Successful data entry!</p>"; }
+echo "</div>";
 
 ?>
